@@ -1368,4 +1368,6 @@
     <string name="remove_from_favourites">Remove From Favourites</string>
     <string name="remove_favourites_body">Are you sure you want to remove the selected media from the favourites folder?
     </string>
+    <string name="no_media_selected">No image selected!</string>
+    <string name="no_sel_media_msg">To select any image, long press the desired image or tap on \"Select All\" from the overflow menu.</string>
 </resources>

@@ -886,7 +886,7 @@ public class LFMainActivity extends SharedMediaActivity {
     }
 
     private void getfavouriteslist() {
-        favouriteslist = new ArrayList<Media>();
+        favouriteslist = new ArrayList<>();
         ArrayList<String> todelete = new ArrayList<>();
         realm = Realm.getDefaultInstance();
         RealmQuery<FavouriteImagesModel> favouriteImagesModelRealmQuery = realm.where(FavouriteImagesModel.class);
@@ -2272,7 +2272,20 @@ public class LFMainActivity extends SharedMediaActivity {
                 AlertDialog.Builder deleteDialog = new AlertDialog.Builder(LFMainActivity.this, getDialogStyle());
 
                 if(fav_photos && !all_photos)
-                    AlertDialogsHelper.getTextDialog(this, deleteDialog, R.string.remove_from_favourites, R.string.remove_favourites_body, null);
+                    if (selectedMedias.size()==0){
+                    AlertDialogsHelper.getTextDialog(this,deleteDialog,R.string.no_media_selected,R.string.no_sel_media_msg,null);
+                    deleteDialog.setPositiveButton(getString(R.string.ok).toUpperCase(), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                    });
+                    AlertDialog alertDialog1=deleteDialog.create();
+                    alertDialog1.show();
+                        AlertDialogsHelper.setButtonTextColor(new int[]{DialogInterface.BUTTON_POSITIVE}, getAccentColor(), alertDialog1);
+                        return true;
+                    }else {
+                        AlertDialogsHelper.getTextDialog(this, deleteDialog, R.string.remove_from_favourites, R.string.remove_favourites_body, null);
+                    }
                 else
                     AlertDialogsHelper.getTextCheckboxDialog(this, deleteDialog, R.string.delete, albumsMode || !editMode ?
                             R.string.delete_album_message :
