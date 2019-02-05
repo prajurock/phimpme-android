@@ -2274,11 +2274,7 @@ public class LFMainActivity extends SharedMediaActivity {
                 if(fav_photos && !all_photos)
                     if (selectedMedias.size()==0){
                     AlertDialogsHelper.getTextDialog(this,deleteDialog,R.string.no_media_selected,R.string.no_sel_media_msg,null);
-                    deleteDialog.setPositiveButton(getString(R.string.ok).toUpperCase(), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            }
-                    });
+                    deleteDialog.setPositiveButton(getString(R.string.ok).toUpperCase(),null);
                     AlertDialog alertDialog1=deleteDialog.create();
                     alertDialog1.show();
                         AlertDialogsHelper.setButtonTextColor(new int[]{DialogInterface.BUTTON_POSITIVE}, getAccentColor(), alertDialog1);
